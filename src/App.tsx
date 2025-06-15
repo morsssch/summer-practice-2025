@@ -1,0 +1,20 @@
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { AppInitial } from './HOC/app';
+import './styles/base/main.scss';
+import { ModalProvider } from './HOC/ModalProvider';
+import { LoaderProvider } from './HOC/LoaderProvider';
+
+const App: React.FC = () => {
+  return (
+    <ModalProvider>
+      <LoaderProvider>
+        <BrowserRouter>
+          <AppInitial />
+        </BrowserRouter>
+      </LoaderProvider>
+    </ModalProvider>
+  );
+};
+
+export default App;
