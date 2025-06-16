@@ -11,7 +11,7 @@ export const AppInitial: React.FC = () => {
     setGlobalLoading(true);
     setTimeout(() => {
       setGlobalLoading(false);
-    }, 5000);
+    }, 1000);
   }, []);
 
   return isGlobalLoading ? (

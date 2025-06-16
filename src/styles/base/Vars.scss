@@ -1,33 +1,43 @@
-// Media breakpoints
-$breakpoint-1: 1300px;
-$breakpoint-2: 1020px;
-$breakpoint-3: 790px;
-$breakpoint-4: 570px;
-$breakpoint-5: 420px;
+$bg: #E9EEF3;
+$widgetBg: #FFFFFF;
+$funnyBlue: #D9DFED;
+$chillGrey: #CACFDB;
+$almostBlack: #161616;
+$notFunnyBlue: #606881;
 
-:root{
-    // Without padding container width
-    --container-width: 1280px;
-    // paddings
-    --container-padding: 15px;
-    --default-ff: 'Sans-serif';
-    --default-text-color: #000;
-    --light-text-color: #FAFAFA;
-    --link-text-color: #6c23d8;
-    --gray-dark: #b6b6b6;
-    --default-bg-color: #f9f3ff;
-    --disabled-bg: #c6c6c6;
+$pastelRed: #FD7790;
+$pastelBlue: #97D4FD;
+$pastelYellow: #FFE67A;
+$pastelGreen: #77FD7C;
+$pastelPink: #FD97FA;
 
-    --primary-color: #5936db;
+// Отступы
+$lGap: 2em; // 32px
+$mGap: 1.25em; // 20px
+$dGap: 1em; // 16px
+$sGap: 0.75em; // 12px
+$xsGap: 0.5em; // 8px
 
+// Скругления
+$lBorderRadius: 1.25em;
+$mBorderRadius: 0.875em;
+$sBorderRadius: 0.5em;
 
+// Шрифт
+$baseFont: "Inter", sans-serif;
 
-    // Input
-    --input-border: #E2E2E2;
-    --placeholder: #909090;
-    --error: #B92121;
-    --placeholder-error: #DF8F8F;
-    --admin-bg: #ECF4FF;
-    --input-shadow: rgba(122, 154, 238, 0.25);
-    --input-error-shadow: rgb(188, 34, 34);
-}
+// Типографика
+$headline1-size: 1.75em;
+$headline2-size: 1.25em;
+$subtitle1-size: 1.125em;
+$body1-size: 1em;
+$body2-size: 0.875em;
+$caption2-size: 0.625em;
+
+$headline1-weight: 600;
+$headline2-weight: 600;
+$subtitle1-weight: 600;
+$body1-weight: 500;
+$body2-weight: 400;
+$caption2-weight: 400;
+

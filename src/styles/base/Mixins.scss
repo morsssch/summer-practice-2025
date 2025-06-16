@@ -1,0 +1,47 @@
+@use '../../styles/base/Vars.scss' as *;
+// Начертания текста
+
+@mixin Headline1 {
+  font-family: $baseFont;
+  font-size: $headline1-size;
+  font-weight: $headline1-weight;
+}
+
+@mixin Headline2 {
+  font-family: $baseFont;
+  font-size: $headline2-size;
+  font-weight: $headline2-weight;
+}
+
+@mixin Subtitle1 {
+  font-family: $baseFont;
+  font-size: $subtitle1-size;
+  font-weight: $subtitle1-weight;
+}
+
+@mixin Body1 {
+  font-family: $baseFont;
+  font-size: $body1-size;
+  font-weight: $body1-weight;
+}
+
+@mixin Body2 {
+  font-family: $baseFont;
+  font-size: $body2-size;
+  font-weight: $body2-weight;
+}
+
+@mixin Caption2 {
+  font-family: $baseFont;
+  font-size: $caption2-size;
+  font-weight: $caption2-weight;
+}
+
+// Виджеты
+
+@mixin widget {
+  display: flex;
+  flex-direction: column;
+  border-radius: $lBorderRadius;
+  background-color: $widgetBg;
+}
