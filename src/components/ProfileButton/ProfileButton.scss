@@ -1,0 +1,12 @@
+@use '../../styles/base/Vars.scss' as *;
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.125em;
+  height: 3.125em;
+  border: 2px solid $almostBlack;
+  border-radius: $mBorderRadius;
+  color: $almostBlack;
+}

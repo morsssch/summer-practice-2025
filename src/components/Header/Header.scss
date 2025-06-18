@@ -1,0 +1,16 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/mixins.scss' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 $xsGap;
+  margin-top: 1em;
+}
+.profile-wrapper {
+  @include Body2;
+  display: flex;
+  align-items: center;
+  gap: $xsGap;
+}

@@ -1,0 +1,69 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.balance-swipe-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 7em;
+  overflow: hidden;
+}
+
+.balance-background {
+  position: absolute;
+  inset: 0;
+  background-color: $almostBlack;
+  color: white;
+  padding: $dGap;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  z-index: 0;
+  border-radius: $lBorderRadius;
+  margin: 1px;
+}
+
+.balance-background-inner {
+  width: 7em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right-title {
+  @include Body2;
+}
+
+.right-action {
+  @include Caption2;
+  display: flex;
+  align-items: center;
+  gap: $xsGap;
+}
+
+.balance-card {
+  position: absolute;
+  inset: 0;
+  background-color: $widgetBg;
+  padding: $dGap;
+  border-radius: $lBorderRadius;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.label {
+  @include Body2;
+}
+
+.amount {
+  @include Headline1;
+}
+
+.hint {
+  @include Caption2;
+}

@@ -1,0 +1,23 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.notifications {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.125em;
+  height: 3.125em;
+  color: $almostBlack;
+}
+
+.notifications-count {
+  @include Caption2;
+  position: absolute;
+  top: 0.5em;
+  right: 1em;
+  background-color: $notFunnyBlue;
+  color: white;
+  padding: 0.2em 0.45em;
+  border-radius: 999px;
+}

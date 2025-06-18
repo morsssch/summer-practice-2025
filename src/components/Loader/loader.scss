@@ -1,3 +1,5 @@
+@use '../../styles/base/Vars.scss' as *;
+
 .loader {
   &__wrapper {
     display: flex;
@@ -9,7 +11,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: var(--default-bg-color);
+    background-color: $bg;
 
     &_local {
       position: fixed;
@@ -21,26 +23,24 @@
 
   &__container {
     display: flex;
-    column-gap: 15px;
+    column-gap: 0.5em;
   }
 
   &__bullet {
-    --edge: 40px;
+    --edge: 1em;
     --trans-duration: 1.5s;
     width: var(--edge);
     height: var(--edge);
-    background-color: #796397;
+    background-color: $almostBlack;
     border-radius: 50%;
 
     @keyframes  levitate {
       0%, 80% {
         transform: translateY(0);
-        //transform: scale(100%);
       }
 
       50% {
-        transform: translateY(-40px);
-        //transform: scale(120%);
+        transform: translateY(-1em);
       }
     }
 

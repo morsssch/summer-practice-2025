@@ -36,12 +36,3 @@
   font-size: $caption2-size;
   font-weight: $caption2-weight;
 }
-
-// Виджеты
-
-@mixin widget {
-  display: flex;
-  flex-direction: column;
-  border-radius: $lBorderRadius;
-  background-color: $widgetBg;
-}

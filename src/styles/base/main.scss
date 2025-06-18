@@ -1,1 +1,6 @@
 @use './Reset';
+@use '../../styles/base/Vars.scss' as *;
+
+:root {
+    background-color: $bg;
+}

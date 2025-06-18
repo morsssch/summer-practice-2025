@@ -4,14 +4,21 @@ import Loader from '../../components/Loader/index.tsx';
 import { AppRouter } from './index.ts';
 
 export const AppInitial: React.FC = () => {
-  const { isGlobalLoading, setGlobalLoading, 
-    isLocalLoading, setLocalLoading } = useLoader();
+  const { isGlobalLoading, setGlobalLoading, isLocalLoading, setLocalLoading } =
+    useLoader();
 
   useEffect(() => {
+    const handleLoad = () => setGlobalLoading(false);
+
     setGlobalLoading(true);
-    setTimeout(() => {
-      setGlobalLoading(false);
-    }, 1000);
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+    }
+
+    return () => window.removeEventListener('load', handleLoad);
   }, []);
 
   return isGlobalLoading ? (
