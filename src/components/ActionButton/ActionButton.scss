@@ -1,0 +1,19 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.action-button {
+  @include Body2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $xsGap;
+  width: 100%;
+  height: 3.5rem;
+  background-color: $almostBlack;
+  color: #ffffff !important;
+  border-radius: $mBorderRadius;
+}
+
+.danger {
+  background-color: $error;
+}

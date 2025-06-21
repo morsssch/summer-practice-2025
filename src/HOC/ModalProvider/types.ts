@@ -14,6 +14,7 @@ export interface ModalConfigI {
   body?: ReactElement | string;
   primaryText?: string;
   secondaryText?: string;
+  buttonsConfig?: 'primaryOnly' | 'primaryAndSecondary';
   primaryHandler?: () => void;
   secondaryHandler?: () => void;
   closeOutside?: boolean;

@@ -1,0 +1,58 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 1rem;
+  @include Body2;
+
+  .input-label {
+    @include Body2;
+    margin-bottom: $sGap;
+    color: $almostBlack;
+
+    span {
+      color: $error;
+    }
+  }
+
+  .input-field {
+    padding: 0.75rem;
+    background-color: $widgetBg;
+    border-radius: $sBorderRadius;
+    transition: border-color 0.3s ease;
+    resize: none;
+
+    &:focus {
+      outline: none;
+      border-color: $notFunnyBlue;
+      box-shadow: 0 0 0 2px $funnyBlue;
+    }
+
+    &.invalid {
+      border-color: $error;
+
+      &:focus {
+        box-shadow: 0 0 0 2px $error;
+      }
+    }
+
+    &:disabled {
+      background-color: $funnyBlue;
+      cursor: not-allowed;
+    }
+
+    &.textarea {
+      min-height: 4rem;
+      line-height: 1.5;
+    }
+  }
+
+  .input-error {
+    margin-top: 0.5rem;
+    color: $error;
+    font-size: 0.8rem;
+  }
+}

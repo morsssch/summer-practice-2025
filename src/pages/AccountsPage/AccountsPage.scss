@@ -1,0 +1,24 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.title {
+  @include Headline1;
+}
+
+.accounts-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $dGap;
+  
+}
+
+.accounts-hint {
+  @include Body2;
+  background-color: #ffffff;
+  padding: $dGap;
+  border-radius: $lBorderRadius;
+  display: flex;
+  justify-content: space-between;
+  gap: $sGap;
+}
+

@@ -1,0 +1,28 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.category-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $xsGap;
+  cursor: pointer;
+}
+
+.icon-wrapper {
+  width: 3.125rem;
+  height: 3.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $sBorderRadius;
+}
+
+.category-name {
+  @include Caption2;
+  color: $notFunnyBlue;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 5rem;
+}

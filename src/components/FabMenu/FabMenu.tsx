@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './FabMenu.scss';
-import { AudioLines, CornerDownRight, PencilLine, Plus } from 'lucide-react';
+import { CornerDownRight, Plus, Sparkles } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -10,9 +10,8 @@ export const FabMenu: React.FC = () => {
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
   const buttons = [
-    { to: '/', label: 'Классическое добавление —', icon: <CornerDownRight /> },
-    { to: '/', label: 'Записать операцию текстом —', icon: <PencilLine /> },
-    { to: '/', label: 'Надиктовать операцию —', icon: <AudioLines /> },
+    { to: '/', label: 'Быстрое добавление —', icon: <Sparkles /> },
+    { to: '/operations/new', label: 'Классическое добавление —', icon: <CornerDownRight /> },
   ];
 
   return (

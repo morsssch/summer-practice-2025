@@ -1,0 +1,39 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.categories-widget-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: $dGap;
+  justify-items: center;
+  padding: $dGap;
+  border-radius: $mBorderRadius;
+  background-color: #ffffff;
+
+  & > .category-icon-container > .icon-wrapper {
+    border: 2px solid;
+    border-color: transparent;
+    transition: all 0.1s ease-out;
+  }
+}
+
+.empty-placeholder {
+  @include Body2;
+  height: 6rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $notFunnyBlue;
+  padding: $lGap $dGap;
+  border-radius: $mBorderRadius;
+  background-color: #ffffff;
+}
+
+.active > .icon-wrapper {
+  border-color: $almostBlack !important;
+
+  & > .lucide {
+    stroke: $almostBlack
+  }
+}

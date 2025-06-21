@@ -1,0 +1,18 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.subtitle {
+  @include Headline2;
+}
+
+.options-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $mGap;
+}
+
+.option-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $dGap;
+}

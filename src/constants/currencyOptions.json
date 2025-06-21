@@ -1,0 +1,8 @@
+[
+  { "value": "RUB", "label": "₽ Российский рубль (RUB)" },
+  { "value": "CNY", "label": "¥ Китайский юань (CNY)" },
+  { "value": "USD", "label": "$ Доллар США (USD)" },
+  { "value": "BRL", "label": "R$ Бразильский реал (BRL)" },
+  { "value": "INR", "label": "₹ Индийская рупия (INR)" },
+  { "value": "ZAR", "label": "R Южноафриканский рэнд (ZAR)" }
+]

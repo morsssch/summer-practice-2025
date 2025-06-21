@@ -1,0 +1,22 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.group-header {
+  @include Subtitle1;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: $dGap;
+}
+
+.group-items {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: $xsGap;
+}
+
+.group-total {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #666;
+}

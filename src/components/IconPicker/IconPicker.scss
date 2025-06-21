@@ -1,0 +1,29 @@
+@use '../../styles/base/Vars.scss' as *;
+// @use '../../styles/base/Mixins.scss' as *;
+
+.icon-picker-grid {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  background-color: $widgetBg;
+  padding: $xsGap;
+  border-radius: $mBorderRadius;
+}
+
+.icon-picker-button {
+  width: 3.125rem;
+  height: 3.125rem;
+  border: none;
+  border-radius: $sBorderRadius;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+
+  &.selected {
+    background-color: $funnyBlue;
+  }
+}

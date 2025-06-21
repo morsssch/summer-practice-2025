@@ -1,0 +1,68 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.account-swipe-container {
+  border-radius: $lBorderRadius;
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 5.75rem;
+  overflow: hidden;
+}
+
+.account-background {
+  position: absolute;
+  inset: 0;
+  background-color: $almostBlack;
+  color: white;
+  padding: $dGap;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  z-index: 0;
+  border-radius: $lBorderRadius;
+  margin: 1px;
+}
+
+.account-background-inner {
+  width: 5em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.account-card {
+  position: absolute;
+  inset: 0;
+  background-color: $widgetBg;
+  padding: $dGap;
+  border-radius: $lBorderRadius;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.right-title {
+  @include Body2;
+}
+
+.right-action {
+  @include Caption2;
+  display: flex;
+  align-items: center;
+  gap: $xsGap;
+}
+
+.account-name {
+  @include Body2;
+}
+
+.account-balance {
+  @include Subtitle1;
+}

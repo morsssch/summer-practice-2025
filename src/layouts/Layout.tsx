@@ -7,6 +7,7 @@ import './Layout.scss';
 
 const Layout: React.FC = () => {
   const location = useLocation();
+  const showFabMenu = location.pathname !== '/operations/new';
 
   return (
     <>
@@ -15,16 +16,15 @@ const Layout: React.FC = () => {
           <motion.div
             className="content-wrapper"
             key={location.pathname}
-            initial={{ opacity: 0, x: -10 }}
+            initial={{ opacity: 0.5, x: -5 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-            style={{ width: '100%' }}
+            transition={{ duration: 0.2, ease: 'easeIn' }}
           >
             <Outlet />
           </motion.div>
         </AnimatePresence>
       </main>
-      <FabMenu />
+      {showFabMenu && <FabMenu />}
       <BottomNav />
     </>
   );

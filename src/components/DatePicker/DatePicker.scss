@@ -1,0 +1,165 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.date-picker {
+  font-family: $baseFont;
+  display: flex;
+  flex-direction: column;
+  gap: $xsGap;
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .date-picker-label {
+    font-size: $body2-size;
+    font-weight: $body1-weight;
+    color: $almostBlack;
+
+    .required {
+      color: $error;
+      margin-left: 0.25em;
+    }
+  }
+
+  .date-input-wrapper,
+  .range-input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: $widgetBg;
+    border-radius: $sBorderRadius;
+    padding: $xsGap;
+    justify-content: space-between;
+    
+    .input-group {
+      display: flex;
+    }
+
+    .date-input {
+      width: 7.5rem;
+    }
+
+    .date-input,
+    .time-input {
+      flex: 0 1 auto;
+      padding: 0.5em 0.75em;
+      border: 1px solid transparent;
+      border-radius: $sBorderRadius;
+      background-color: transparent;
+      font-size: $body1-size;
+      color: $almostBlack;
+
+      &:focus {
+        outline: none;
+        border-color: $funnyBlue;
+      }
+
+      &.error {
+        border-color: $error;
+      }
+    }
+
+    .time-input {
+      width: 4.5rem; 
+    }
+
+    .calendar-toggle {
+      background: none;
+      border: none;
+      font-size: 1.25em;
+      cursor: pointer;
+      color: $notFunnyBlue;
+      padding: 0 $xsGap;
+
+      &:hover {
+        color: $almostBlack;
+      }
+    }
+
+    .range-separator {
+      font-size: $body1-size;
+      color: $notFunnyBlue;
+      padding: 0 $xsGap;
+    }
+  }
+
+  .calendar-popup {
+    background-color: $widgetBg;
+    border-radius: $mBorderRadius;
+    padding: $sGap;
+    margin-top: $xsGap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 20;
+    width: 100%;
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: $subtitle1-weight;
+      font-size: $subtitle1-size;
+      margin-bottom: $xsGap;
+
+      .month-nav {
+        background: none;
+        border: none;
+        font-size: 1.25em;
+        color: $notFunnyBlue;
+        cursor: pointer;
+
+        &:hover {
+          color: $almostBlack;
+        }
+      }
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: $xsGap;
+
+      .day-header {
+        text-align: center;
+        font-weight: $body1-weight;
+        color: $notFunnyBlue;
+      }
+
+      .calendar-day {
+        text-align: center;
+        padding: 0.5em 0;
+        border-radius: $sBorderRadius;
+        cursor: pointer;
+        font-weight: $body1-weight;
+        color: $almostBlack;
+
+        &:hover {
+          background-color: $funnyBlue;
+        }
+
+        &.selected {
+          background-color: $funnyBlue;
+        }
+
+        &.disabled {
+          color: $chillGrey;
+          cursor: not-allowed;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+
+        &.outside {
+          color: $chillGrey;
+        }
+      }
+    }
+  }
+
+  .error-message {
+    font-size: $caption2-size;
+    color: $error;
+    margin-top: $xsGap;
+  }
+}

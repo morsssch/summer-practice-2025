@@ -11,17 +11,23 @@
     "prepare": "husky",
     "format": "prettier --write .",
     "lint:fix": "eslint . --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cc": "node createComponent.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
     "axios": "^1.8.4",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "eslint-plugin-import": "^2.31.0",
+    "framer-motion": "^12.18.1",
+    "lucide-react": "^0.515.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.4.0",
-    "sass": "^1.86.0"
+    "sass": "^1.86.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.26.3",

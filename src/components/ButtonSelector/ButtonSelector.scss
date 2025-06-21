@@ -1,0 +1,53 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.button-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $xsGap;
+  position: relative;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 100%;
+  border-radius: $sBorderRadius;
+}
+
+.selector-button {
+  flex: 1 1 calc(33.333% - 8px);
+  min-width: 5rem;
+  padding: 0;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  border-radius: $sBorderRadius;
+  overflow: hidden;
+  background-color: #ffffff;
+
+  .button-content {
+    @include Body2;
+    position: relative;
+    display: block;
+    padding: 0.625rem;
+    z-index: 2; // Текст выше индикатора
+    color: $almostBlack;
+    transition: color 0.2s ease;
+  }
+
+  &:hover .button-content {
+    color: darken($almostBlack, 10%);
+  }
+
+  &.active .button-content {
+    color: #ffffff;
+  }
+}
+
+.selector-indicator {
+  position: absolute;
+  background-color: $almostBlack;
+  border-radius: $sBorderRadius;
+  z-index: 1;
+  pointer-events: none;
+}

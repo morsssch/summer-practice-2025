@@ -1,0 +1,174 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.dropdown-container {
+  position: relative;
+  width: 100%;
+  font-size: 1rem;
+  @include Body2;
+
+  &.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .dropdown-label {
+    @include Body2;
+    margin-bottom: $sGap;
+    color: $almostBlack;
+    display: block;
+
+    .required-asterisk {
+      color: $error;
+      margin-left: 0.25rem;
+    }
+  }
+
+  .dropdown-header {
+    padding: 0.75rem;
+    background-color: $widgetBg;
+    border-radius: $sBorderRadius;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: $notFunnyBlue;
+    }
+
+    &.open {
+      border-color: $notFunnyBlue;
+      box-shadow: 0 0 0 2px $funnyBlue;
+    }
+
+    &.error {
+      border-color: $error;
+
+      &.open {
+        box-shadow: 0 0 0 2px rgba($error, 0.2);
+      }
+    }
+  }
+
+  .dropdown-selected {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $almostBlack;
+
+    .selected-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .selected-tag {
+      background-color: $funnyBlue;
+      padding: 0.25rem 0.5rem;
+      border-radius: $sBorderRadius;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.875rem;
+
+      &.more {
+        background-color: transparent;
+        color: $almostBlack;
+      }
+
+      .remove-tag {
+        background: none;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+        padding: 0;
+        font-size: 1rem;
+        line-height: 1;
+
+        &:hover {
+          color: $error;
+        }
+      }
+    }
+  }
+
+  .dropdown-arrow {
+    margin-left: 0.5rem;
+    color: $almostBlack;
+  }
+
+  .dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0.25rem;
+    background-color: $widgetBg;
+    border-radius: $sBorderRadius;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  .dropdown-search {
+    padding: 0.5rem;
+
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: $sBorderRadius;
+      outline: none;
+
+      &:focus {
+        border-color: $notFunnyBlue;
+      }
+    }
+  }
+
+  .dropdown-options {
+    max-height: 8rem;
+    overflow-y: auto;
+  }
+
+  .dropdown-option {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba($funnyBlue, 0.2);
+    }
+
+    &.selected {
+      background-color: rgba($funnyBlue, 0.4);
+      font-weight: 500;
+    }
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .option-checkbox {
+      margin-right: 0.75rem;
+      cursor: pointer;
+    }
+  }
+
+  .dropdown-no-options {
+    padding: 0.75rem 1rem;
+    text-align: center;
+  }
+
+  .dropdown-error {
+    margin-top: 0.5rem;
+    color: $error;
+    font-size: 0.8rem;
+  }
+}

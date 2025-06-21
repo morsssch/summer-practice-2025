@@ -1,0 +1,5 @@
+[
+  { "value": "cash", "label": "Наличные" },
+  { "value": "card", "label": "Карта" },
+  { "value": "other", "label": "Другое" }
+]

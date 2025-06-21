@@ -7,6 +7,6 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 $mGap;
+  padding: $lGap $mGap $lGap * 6 $mGap;
   gap: $lGap;
 }

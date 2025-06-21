@@ -1,0 +1,39 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.extra-filters {
+  display: flex;
+  flex-direction: column;
+  gap: $dGap;
+}
+
+.filler {
+  width: 100%;
+  height: $xsGap;
+}
+
+.no-operations {
+  text-align: center;
+  margin-top: 2rem;
+  color: #999;
+}
+
+.filter-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-header {
+  display: flex;
+  gap: $sGap;
+}
+
+.filter-button {
+  @include Caption2;
+  color: $chillGrey;
+  padding: $sGap $mGap;
+}
+
+.active {
+  color: $almostBlack;
+}
