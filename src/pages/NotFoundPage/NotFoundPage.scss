@@ -1,0 +1,22 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  text-align: center;
+  padding: 2em;
+
+  .title {
+    @include Headline1;
+    font-size: $lGap * 2;
+  }
+
+  .subtitle {
+    @include Headline2;
+    margin-bottom: 1.5em;
+  }
+}

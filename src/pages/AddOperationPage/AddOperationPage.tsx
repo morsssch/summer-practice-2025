@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './AddOperationPage.scss';
 import { useNavigate } from 'react-router';
 import type { TransactionType, Account, Category } from '../../services/types';
 import provider from '../../services/provider';
@@ -32,7 +31,7 @@ export const AddOperationPage: React.FC = () => {
   const [amount, setAmount] = useState<number | null>(null);
   const [categoryId, setCategoryId] = useState<string | null>(null);
   const [comment, setComment] = useState('');
-  const [date, setDate] = useState<string>(new Date().toISOString()); // Устанавливаем текущую дату по умолчанию
+  const [date, setDate] = useState<string>(new Date().toISOString());
 
   useEffect(() => {
     const loadData = async () => {
@@ -101,7 +100,7 @@ export const AddOperationPage: React.FC = () => {
         toId: targetAccountId as string,
         amount,
         comment,
-        date: date || new Date().toISOString(), // Используем дату из DatePicker или текущую
+        date: date || new Date().toISOString(), 
       });
     } else {
       if (!date) {

@@ -8,8 +8,11 @@
   @include Body2;
 
   &.disabled {
-    opacity: 0.6;
     pointer-events: none;
+
+    & .dropdown-header {
+      background-color: #d9dfed;
+    }
   }
 
   .dropdown-label {

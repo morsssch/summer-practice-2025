@@ -18,7 +18,7 @@ export const BottomNav: React.FC = () => {
     { to: '/analytics', icon: <ChartNoAxesCombined />, label: 'Аналитика' },
     { to: '/other', icon: <Settings2 />, label: 'Прочее' },
   ];
-
+  
   useEffect(() => {
     if (!navRef.current) {
       return;

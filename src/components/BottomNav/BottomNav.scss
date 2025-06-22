@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   z-index: 9999999;
+  transition: transform 0.3s ease;
 
   .bottom-nav {
     background-color: $almostBlack;

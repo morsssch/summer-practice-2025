@@ -6,10 +6,9 @@ import { getData, setData } from './storage';
 export const localStorageProvider: FinanceProvider = {
   async getTotalBalance(targetCurrency?: string): Promise<number> {
     const data = getData();
-    const transactions = data.transactions;
     const currency = targetCurrency || data.defaultCurrency || 'RUB';
 
-    return transactions
+    return data.transactions
       .filter((tx) => tx.currency === currency)
       .reduce((sum, tx) => {
         if (tx.type === 'transfer') {
@@ -35,32 +34,23 @@ export const localStorageProvider: FinanceProvider = {
     return newAccount;
   },
 
-  updateAccount(accountToUpdate: Account): Account[] {
+  async updateAccount(accountToUpdate: Account): Promise<Account[]> {
     const data = getData();
-    const updatedAccounts = data.accounts.map((account) =>
-      account.id === accountToUpdate.id ? accountToUpdate : account,
+    const updatedAccounts = data.accounts.map((acc) =>
+      acc.id === accountToUpdate.id ? accountToUpdate : acc,
     );
-    setData({
-      ...data,
-      accounts: updatedAccounts,
-    });
+    setData({ ...data, accounts: updatedAccounts });
     return updatedAccounts;
   },
 
-  deleteAccount(accountId: string): Account[] {
+  async deleteAccount(accountId: string): Promise<Account[]> {
     const data = getData();
-    const filteredAccounts = data.accounts.filter(
-      (account) => account.id !== accountId,
-    );
-    const filteredTransactions = data.transactions.filter(
+    const accounts = data.accounts.filter((acc) => acc.id !== accountId);
+    const transactions = data.transactions.filter(
       (tx) => tx.accountId !== accountId && tx.toId !== accountId,
     );
-    setData({
-      ...data,
-      accounts: filteredAccounts,
-      transactions: filteredTransactions,
-    });
-    return filteredAccounts;
+    setData({ ...data, accounts, transactions });
+    return accounts;
   },
 
   async getAccountBalance(
@@ -68,18 +58,18 @@ export const localStorageProvider: FinanceProvider = {
     transactions: Transaction[],
   ): Promise<number> {
     const data = getData();
-    const account = data.accounts.find((acc) => acc.id === accountId);
-    const accountCurrency = account?.currency || data.defaultCurrency || 'RUB';
+    const account = data.accounts.find((a) => a.id === accountId);
+    const currency = account?.currency || data.defaultCurrency || 'RUB';
 
     return transactions
-      .filter((tx) => tx.currency === accountCurrency)
+      .filter((tx) => tx.currency === currency)
       .reduce((sum, tx) => {
         if (tx.type === 'transfer') {
           if (tx.accountId === accountId) {
-            return sum - tx.amount; 
+            return sum - tx.amount;
           }
           if (tx.toId === accountId) {
-            return sum + tx.amount; 
+            return sum + tx.amount;
           }
           return sum;
         }
@@ -97,41 +87,29 @@ export const localStorageProvider: FinanceProvider = {
 
   async addCategory(categoryData: Omit<Category, 'id'>): Promise<Category> {
     const data = getData();
-    const newCategory: Category = {
-      id: uuid(),
-      ...categoryData,
-    };
+    const newCategory: Category = { id: uuid(), ...categoryData };
     data.categories.push(newCategory);
     setData(data);
     return newCategory;
   },
 
-  updateCategory(categoryToUpdate: Category): Category[] {
+  async updateCategory(categoryToUpdate: Category): Promise<Category[]> {
     const data = getData();
-    const updatedCategories = data.categories.map((category) =>
-      category.id === categoryToUpdate.id ? categoryToUpdate : category,
+    const updatedCategories = data.categories.map((cat) =>
+      cat.id === categoryToUpdate.id ? categoryToUpdate : cat,
     );
-    setData({
-      ...data,
-      categories: updatedCategories,
-    });
+    setData({ ...data, categories: updatedCategories });
     return updatedCategories;
   },
 
-  deleteCategory(categoryId: string): Category[] {
+  async deleteCategory(categoryId: string): Promise<Category[]> {
     const data = getData();
-    const filteredCategories = data.categories.filter(
-      (category) => category.id !== categoryId,
-    );
-    const filteredTransactions = data.transactions.filter(
+    const categories = data.categories.filter((cat) => cat.id !== categoryId);
+    const transactions = data.transactions.filter(
       (tx) => tx.categoryId !== categoryId,
     );
-    setData({
-      ...data,
-      categories: filteredCategories,
-      transactions: filteredTransactions,
-    });
-    return filteredCategories;
+    setData({ ...data, categories, transactions });
+    return categories;
   },
 
   async getTransactions(): Promise<Transaction[]> {
@@ -152,36 +130,38 @@ export const localStorageProvider: FinanceProvider = {
     return newTx;
   },
 
-  updateTransaction(transactionToUpdate: Transaction): Transaction[] {
+  async updateTransaction(
+    id: string,
+    updatedData: Partial<Transaction>,
+  ): Promise<Transaction[]> {
     const data = getData();
-    const account = data.accounts.find(
-      (acc) => acc.id === transactionToUpdate.accountId,
-    );
-    const updatedTransaction = {
-      ...transactionToUpdate,
+    const index = data.transactions.findIndex((tx) => tx.id === id);
+    if (index === -1) {
+      throw new Error('Транзакция не найдена');
+    }
+
+    const oldTx = data.transactions[index];
+    const account =
+      data.accounts.find((a) => a.id === updatedData.accountId) ||
+      data.accounts.find((a) => a.id === oldTx.accountId);
+
+    const updatedTx: Transaction = {
+      ...oldTx,
+      ...updatedData,
       currency: account?.currency || data.defaultCurrency || 'RUB',
-      toId: transactionToUpdate.toId || '',
+      toId: updatedData.toId || '',
     };
-    const updatedTransactions = data.transactions.map((tx) =>
-      tx.id === transactionToUpdate.id ? updatedTransaction : tx,
-    );
-    setData({
-      ...data,
-      transactions: updatedTransactions,
-    });
-    return updatedTransactions;
+
+    data.transactions[index] = updatedTx;
+    setData(data);
+    return data.transactions;
   },
 
-  deleteTransaction(transactionId: string): Transaction[] {
+  async deleteTransaction(id: string): Promise<Transaction[]> {
     const data = getData();
-    const filteredTransactions = data.transactions.filter(
-      (tx) => tx.id !== transactionId,
-    );
-    setData({
-      ...data,
-      transactions: filteredTransactions,
-    });
-    return filteredTransactions;
+    const transactions = data.transactions.filter((tx) => tx.id !== id);
+    setData({ ...data, transactions });
+    return transactions;
   },
 
   async addTransfer({
@@ -189,16 +169,17 @@ export const localStorageProvider: FinanceProvider = {
     toId,
     amount,
     comment,
+    date,
   }: {
     fromId: string;
     toId: string;
     amount: number;
     comment?: string;
+    date: string;
   }): Promise<Transaction> {
     const data = getData();
     const from = data.accounts.find((acc) => acc.id === fromId);
     const to = data.accounts.find((acc) => acc.id === toId);
-
     if (!from || !to) {
       throw new Error('Один из счетов не найден');
     }
@@ -210,7 +191,6 @@ export const localStorageProvider: FinanceProvider = {
     }
 
     const currency = from.currency || data.defaultCurrency || 'RUB';
-    const now = new Date().toISOString();
 
     const transfer: Transaction = {
       id: uuid(),
@@ -223,12 +203,11 @@ export const localStorageProvider: FinanceProvider = {
       categoryId: '',
       categoryName: '',
       comment: comment || `Перевод между счетами`,
-      date: now,
+      date,
     };
 
     data.transactions.push(transfer);
     setData(data);
-
     return transfer;
   },
 
@@ -236,11 +215,8 @@ export const localStorageProvider: FinanceProvider = {
     return getData().defaultCurrency;
   },
 
-  setDefaultCurrency(currency: string): void {
+  async setDefaultCurrency(currency: string): Promise<void> {
     const data = getData();
-    setData({
-      ...data,
-      defaultCurrency: currency,
-    });
+    setData({ ...data, defaultCurrency: currency });
   },
 };

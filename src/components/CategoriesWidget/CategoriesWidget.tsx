@@ -18,6 +18,7 @@ interface CategoriesWidgetProps {
   categories: Category[];
   selectedCategoryId?: string;
   onSelect?: (categoryId: string) => void;
+  disabled?: boolean;
 }
 
 export const CategoriesWidget: React.FC<CategoriesWidgetProps> = ({
@@ -26,6 +27,7 @@ export const CategoriesWidget: React.FC<CategoriesWidgetProps> = ({
   categories,
   selectedCategoryId,
   onSelect,
+  disabled = false,
 }) => {
   const navigate = useNavigate();
 
@@ -48,7 +50,7 @@ export const CategoriesWidget: React.FC<CategoriesWidgetProps> = ({
   }
 
   return (
-    <div className="categories-widget-grid">
+    <div className={`categories-widget-grid ${disabled ? 'disabled' : ''}`}>
       {filteredCategories.map((category) => (
         <CategoryIcon
           key={category.id}

@@ -1,7 +1,10 @@
 @use '../styles/base/Vars.scss' as *;
 
 main {
-  height: max-content;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 .content-wrapper {
   display: flex;

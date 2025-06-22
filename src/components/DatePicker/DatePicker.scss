@@ -8,8 +8,11 @@
   gap: $xsGap;
 
   &.disabled {
-    opacity: 0.5;
     pointer-events: none;
+
+    & .date-input-wrapper {
+      background-color: #d9dfed;
+    }
   }
 
   .date-picker-label {

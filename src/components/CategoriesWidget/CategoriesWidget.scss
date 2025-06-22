@@ -10,6 +10,15 @@
   border-radius: $mBorderRadius;
   background-color: #ffffff;
 
+  &.disabled {
+    pointer-events: none;
+    background-color: #d9dfed;
+
+    & > .category-icon-container > .icon-wrapper {
+      background-color: #edf1f9 !important;
+    }
+  }
+
   & > .category-icon-container > .icon-wrapper {
     border: 2px solid;
     border-color: transparent;

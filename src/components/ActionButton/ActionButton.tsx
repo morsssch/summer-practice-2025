@@ -23,7 +23,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   const content = (
     <>
       {label}
-      {Icon && <Icon size={16} />}
+      {Icon && <Icon size={18} />}
     </>
   );
 

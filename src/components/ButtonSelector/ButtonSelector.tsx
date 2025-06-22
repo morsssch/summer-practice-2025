@@ -11,12 +11,14 @@ interface ButtonSelectorProps {
   options: Option[];
   onSelect?: (selectedValue: string) => void;
   initialSelected?: string;
+  disabled?: boolean;
 }
 
 export const ButtonSelector: React.FC<ButtonSelectorProps> = ({
   options,
   onSelect,
   initialSelected,
+  disabled = false,
 }) => {
   const [selected, setSelected] = useState(initialSelected || options[0].value);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -29,9 +31,7 @@ export const ButtonSelector: React.FC<ButtonSelectorProps> = ({
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) {
-      return;
-    }
+    if (!container) {return;}
 
     const activeEl = container.querySelector(
       `[data-value="${selected}"]`,
@@ -49,13 +49,14 @@ export const ButtonSelector: React.FC<ButtonSelectorProps> = ({
   }, [selected, options]);
 
   const handleClick = (value: string) => {
+    if (disabled) {return;}
     setSelected(value);
     onSelect?.(value);
   };
 
   return (
     <div
-      className="button-selector"
+      className={`button-selector ${disabled ? 'disabled' : ''}`}
       ref={containerRef}
     >
       {options.map(({ value, label }) => (
@@ -64,6 +65,7 @@ export const ButtonSelector: React.FC<ButtonSelectorProps> = ({
           data-value={value}
           onClick={() => handleClick(value)}
           className={`selector-button ${selected === value ? 'active' : ''}`}
+          disabled={disabled}
         >
           <span className="button-content">{label}</span>
         </button>

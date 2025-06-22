@@ -6,8 +6,8 @@ export interface FinanceProvider {
 
   getAccounts(): Promise<Account[]>;
   addAccount(account: Omit<Account, 'id'>): Promise<Account>;
-  updateAccount(accountToUpdate: Account): Account[];
-  deleteAccount(accountId: string): Account[];
+  updateAccount(accountToUpdate: Account): Promise<Account[]>; //
+  deleteAccount(accountId: string): Promise<Account[]>; //
   getAccountBalance(
     accountId: string,
     transactions: Transaction[],
@@ -15,13 +15,13 @@ export interface FinanceProvider {
 
   getCategories(type?: TransactionType): Promise<Category[]>;
   addCategory(category: Omit<Category, 'id'>): Promise<Category>;
-  updateCategory(categoryToUpdate: Category): Category[];
-  deleteCategory(categoryId: string): Category[];
+  updateCategory(categoryToUpdate: Category): Promise<Category[]>; //
+  deleteCategory(categoryId: string): Promise<Category[]>; //
 
   getTransactions(): Promise<Transaction[]>;
   addTransaction(transaction: Omit<Transaction, 'id'>): Promise<Transaction>;
-  updateTransaction(transactionToUpdate: Transaction): Transaction[];
-  deleteTransaction(transactionId: string): Transaction[];
+  updateTransaction(id: string, updatedData: Partial<Transaction>): Promise<Transaction[]>;
+  deleteTransaction(id: string): Promise<Transaction[]>
 
   addTransfer({
     fromId,

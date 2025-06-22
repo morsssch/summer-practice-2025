@@ -12,6 +12,8 @@ import { CategoriesPage } from '../../pages/CategoriesPage/CategoriesPage';
 import { EditCategoryPage } from '../../pages/EditCategoryPage/EditCategoryPage.tsx';
 import { OperationsPage } from '../../pages/OperationsPage/OperationsPage';
 import { AddOperationPage } from '../../pages/AddOperationPage/AddOperationPage.tsx';
+import { EditOperationPage } from '../../pages/EditOperationPage/EditOperationPage.tsx';
+import { NotFoundPage } from '../../pages/NotFoundPage/NotFoundPage.tsx';
 
 export const AppRouter: React.FC = () => {
   return (
@@ -30,12 +32,13 @@ export const AppRouter: React.FC = () => {
         
         <Route path="operations" element={<OperationsPage />} />
         <Route path="operations/new" element={<AddOperationPage />} />
+        <Route path="operations/:id" element={<EditOperationPage />} />
 
         
         <Route path="analytics" element={<AnalyticsPage />} />
         <Route path="other" element={<OtherPage />} />
 
-
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

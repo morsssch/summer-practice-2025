@@ -10,6 +10,14 @@
   align-items: flex-start;
   max-width: 100%;
   border-radius: $sBorderRadius;
+
+  &.disabled {
+    pointer-events: none;
+    .selector-button {
+      background-color: #d9dfed;
+      cursor: default;
+    }
+  }
 }
 
 .selector-button {

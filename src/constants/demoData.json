@@ -1,0 +1,449 @@
+{
+    "accounts": [
+        {
+            "id": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "type": "card",
+            "name": "Сбербанк",
+            "currency": "RUB"
+        },
+        {
+            "id": "30ef3580-7f8e-4a6d-bf9f-eb13f7296f70",
+            "type": "cash",
+            "name": "Финансовая подушка",
+            "currency": "RUB"
+        },
+        {
+            "id": "d3202d05-fdf4-43df-8114-c40f6cc09d6f",
+            "type": "card",
+            "name": "Иностранный счёт",
+            "currency": "CNY"
+        },
+        {
+            "id": "de827331-7da8-4e10-ad10-7f7c6c1680b0",
+            "type": "card",
+            "name": "Т-банк",
+            "currency": "RUB"
+        }
+    ],
+    "categories": [
+        {
+            "id": "233b5135-64a7-4254-929d-a8829d039c64",
+            "name": "Зарплата",
+            "type": "income",
+            "color": "#E7FAE1",
+            "icon": "CreditCard"
+        },
+        {
+            "id": "e9d855b6-6f10-4f7d-86bc-cded4043f471",
+            "name": "Сдаю квартиру",
+            "type": "income",
+            "color": "#FAF6E1",
+            "icon": "Home"
+        },
+        {
+            "id": "3aa1dde4-cee5-4020-a3e1-c74ba79f6ec9",
+            "name": "Фриланс",
+            "type": "income",
+            "color": "#EDE4F6",
+            "icon": "Gift"
+        },
+        {
+            "id": "c572fcc3-026f-4a40-a15c-91722352cb5b",
+            "name": "Возврат долгов",
+            "type": "income",
+            "color": "#E1FAF6",
+            "icon": "DollarSign"
+        },
+        {
+            "id": "48c9028c-9a7f-4506-8346-0ab36d3085d6",
+            "name": "Сбережения",
+            "type": "income",
+            "color": "#E1E7FA",
+            "icon": "PiggyBank"
+        },
+        {
+            "id": "646e8e7b-0ebe-4101-a7a6-9bfb4ddf3bea",
+            "name": "Переводы",
+            "type": "income",
+            "color": "#F6E5F1",
+            "icon": "CreditCard"
+        },
+        {
+            "id": "b1e0aac9-1b46-4fc3-8703-19c60bee93ac",
+            "name": "Еда и кафе",
+            "type": "expense",
+            "color": "#E1FAF6",
+            "icon": "Coffee"
+        },
+        {
+            "id": "a3e004f3-dff3-4bba-98eb-87283c17c01c",
+            "name": "Продукты",
+            "type": "expense",
+            "color": "#F0FAE1",
+            "icon": "Utensils"
+        },
+        {
+            "id": "080be91b-d737-48dd-8f65-474540f48fde",
+            "name": "Транспорт",
+            "type": "expense",
+            "color": "#E1F0FA",
+            "icon": "Car"
+        },
+        {
+            "id": "6718ba14-abb5-4e23-872b-f7b7716d92db",
+            "name": "ЖКУ",
+            "type": "expense",
+            "color": "#FAE1E7",
+            "icon": "Home"
+        },
+        {
+            "id": "f60952a4-ac3d-48bd-96e6-1e0d69c2d14a",
+            "name": "Интернет и связь",
+            "type": "expense",
+            "color": "#E1E7FA",
+            "icon": "Phone"
+        },
+        {
+            "id": "531b6d35-a53a-49d1-b43f-14832894cf1c",
+            "name": "Импульсивные покупки",
+            "type": "expense",
+            "color": "#F6E5F1",
+            "icon": "ShoppingBag"
+        },
+        {
+            "id": "b1192fac-4288-407a-81d0-b014fd1c446b",
+            "name": "Развлечения и подписки",
+            "type": "expense",
+            "color": "#FAF6E1",
+            "icon": "Star"
+        }
+    ],
+    "transactions": [
+        {
+            "id": "799c3bde-40d4-4870-a0ed-3c9f203bf6bb",
+            "type": "income",
+            "accountId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "accountName": "Сбербанк",
+            "amount": 44000,
+            "categoryId": "233b5135-64a7-4254-929d-a8829d039c64",
+            "categoryName": "Зарплата",
+            "comment": "",
+            "date": "2025-06-22T13:47:14.278Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "2dd13583-b511-4cf1-89e2-7144d8fd867c",
+            "type": "transfer",
+            "amount": 10000,
+            "currency": "RUB",
+            "accountId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "accountName": "Сбербанк",
+            "toId": "30ef3580-7f8e-4a6d-bf9f-eb13f7296f70",
+            "categoryId": "",
+            "categoryName": "",
+            "comment": "Перевод между счетами",
+            "date": "2025-06-22T13:49:19.168Z"
+        },
+        {
+            "id": "2922e489-eff8-4ece-8282-6da1b3fc6d59",
+            "type": "income",
+            "accountId": "d3202d05-fdf4-43df-8114-c40f6cc09d6f",
+            "accountName": "Иностранный счёт",
+            "amount": 500,
+            "categoryId": "646e8e7b-0ebe-4101-a7a6-9bfb4ddf3bea",
+            "categoryName": "Переводы",
+            "comment": "Откладываю в другой валюте",
+            "date": "2025-06-22T13:49:26.263Z",
+            "currency": "CNY",
+            "toId": ""
+        },
+        {
+            "id": "a1e85b52-c4f3-4a49-98e7-1c2361fa9d01",
+            "type": "income",
+            "accountId": "de827331-7da8-4e10-ad10-7f7c6c1680b0",
+            "accountName": "Т-банк",
+            "amount": 15000,
+            "categoryId": "3aa1dde4-cee5-4020-a3e1-c74ba79f6ec9",
+            "categoryName": "Фриланс",
+            "comment": "Проект на фрилансе",
+            "date": "2025-06-22T16:30:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "f7f6a9d4-6d7e-4d59-b49f-6e92a3ed5b99",
+            "type": "expense",
+            "accountId": "30ef3580-7f8e-4a6d-bf9f-eb13f7296f70",
+            "accountName": "Финансовая подушка",
+            "amount": 800,
+            "categoryId": "b1e0aac9-1b46-4fc3-8703-19c60bee93ac",
+            "categoryName": "Еда и кафе",
+            "comment": "Кофе с друзьями",
+            "date": "2025-06-22T18:00:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "2abf9f43-5f33-427d-b998-1d4ac1be0db2",
+            "type": "expense",
+            "accountId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "accountName": "Сбербанк",
+            "amount": 3500,
+            "categoryId": "a3e004f3-dff3-4bba-98eb-87283c17c01c",
+            "categoryName": "Продукты",
+            "comment": "Покупка продуктов в магазине",
+            "date": "2025-06-23T10:20:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "734a9d70-f0dc-47cb-bd37-c5a4a7a2320b",
+            "type": "expense",
+            "accountId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "accountName": "Сбербанк",
+            "amount": 600,
+            "categoryId": "080be91b-d737-48dd-8f65-474540f48fde",
+            "categoryName": "Транспорт",
+            "comment": "Поездка на метро",
+            "date": "2025-06-23T13:45:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "41b1a1a1-4665-4e8e-bf41-04f7410d9c6a",
+            "type": "expense",
+            "accountId": "de827331-7da8-4e10-ad10-7f7c6c1680b0",
+            "accountName": "Т-банк",
+            "amount": 1200,
+            "categoryId": "f60952a4-ac3d-48bd-96e6-1e0d69c2d14a",
+            "categoryName": "Интернет и связь",
+            "comment": "Оплата интернета",
+            "date": "2025-06-23T19:30:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "2b5a7c31-c482-4f9b-a3de-2df1b56c3641",
+            "type": "expense",
+            "accountId": "30ef3580-7f8e-4a6d-bf9f-eb13f7296f70",
+            "accountName": "Финансовая подушка",
+            "amount": 500,
+            "categoryId": "b1192fac-4288-407a-81d0-b014fd1c446b",
+            "categoryName": "Развлечения и подписки",
+            "comment": "Подписка на сервис",
+            "date": "2025-06-23T21:00:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "d7e35f38-3a9a-4a25-bb68-832e467deaa9",
+            "type": "income",
+            "accountId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "accountName": "Сбербанк",
+            "amount": 20000,
+            "categoryId": "e9d855b6-6f10-4f7d-86bc-cded4043f471",
+            "categoryName": "Сдаю квартиру",
+            "comment": "",
+            "date": "2025-06-23T23:59:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "053f9d21-cb26-4215-91e1-348eac6a2b51",
+            "type": "income",
+            "accountId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "accountName": "Сбербанк",
+            "amount": 2000,
+            "categoryId": "c572fcc3-026f-4a40-a15c-91722352cb5b",
+            "categoryName": "Возврат долгов",
+            "comment": "Вернули долг",
+            "date": "2025-06-24T09:00:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "41642db3-f837-46f2-9201-76b92d1a7a32",
+            "type": "expense",
+            "accountId": "de827331-7da8-4e10-ad10-7f7c6c1680b0",
+            "accountName": "Т-банк",
+            "amount": 4000,
+            "categoryId": "6718ba14-abb5-4e23-872b-f7b7716d92db",
+            "categoryName": "ЖКУ",
+            "comment": "Оплата коммунальных услуг",
+            "date": "2025-06-24T12:00:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "53d23882-f02a-47f3-8473-cf68f36bca8a",
+            "type": "expense",
+            "accountId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "accountName": "Сбербанк",
+            "amount": 1000,
+            "categoryId": "531b6d35-a53a-49d1-b43f-14832894cf1c",
+            "categoryName": "Импульсивные покупки",
+            "comment": "Магазин электроники",
+            "date": "2025-06-24T15:45:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "3fa3b245-7d6c-448a-81e8-7f06d2e6a9aa",
+            "type": "transfer",
+            "amount": 7000,
+            "currency": "RUB",
+            "accountId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "accountName": "Сбербанк",
+            "toId": "d3202d05-fdf4-43df-8114-c40f6cc09d6f",
+            "categoryId": "",
+            "categoryName": "",
+            "comment": "Перевод на иностранный счёт",
+            "date": "2025-06-24T16:00:00.000Z"
+        },
+        {
+            "id": "40fddc7d-2954-4f98-92b7-408cf61f43ad",
+            "type": "transfer",
+            "amount": 1000,
+            "currency": "RUB",
+            "accountId": "30ef3580-7f8e-4a6d-bf9f-eb13f7296f70",
+            "accountName": "Финансовая подушка",
+            "toId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "categoryId": "",
+            "categoryName": "",
+            "comment": "Возврат сбережений",
+            "date": "2025-06-24T18:00:00.000Z"
+        },
+        {
+            "id": "e3279d8d-6c14-43d4-8a6d-6b09a7efcb3e",
+            "type": "income",
+            "accountId": "de827331-7da8-4e10-ad10-7f7c6c1680b0",
+            "accountName": "Т-банк",
+            "amount": 12000,
+            "categoryId": "3aa1dde4-cee5-4020-a3e1-c74ba79f6ec9",
+            "categoryName": "Фриланс",
+            "comment": "Оплата за дизайн",
+            "date": "2025-06-25T10:00:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "d511ae7d-6a74-4459-9cc6-5e5512de97b2",
+            "type": "expense",
+            "accountId": "30ef3580-7f8e-4a6d-bf9f-eb13f7296f70",
+            "accountName": "Финансовая подушка",
+            "amount": 2000,
+            "categoryId": "a3e004f3-dff3-4bba-98eb-87283c17c01c",
+            "categoryName": "Продукты",
+            "comment": "Покупка овощей и фруктов",
+            "date": "2025-06-25T12:30:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "9d2f870c-91c6-4461-b62d-f7648c195ef6",
+            "type": "expense",
+            "accountId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "accountName": "Сбербанк",
+            "amount": 900,
+            "categoryId": "b1e0aac9-1b46-4fc3-8703-19c60bee93ac",
+            "categoryName": "Еда и кафе",
+            "comment": "Обед в кафе",
+            "date": "2025-06-25T14:00:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "68ac82d7-6d47-4b06-9d62-8f14b2274e2f",
+            "type": "expense",
+            "accountId": "de827331-7da8-4e10-ad10-7f7c6c1680b0",
+            "accountName": "Т-банк",
+            "amount": 300,
+            "categoryId": "080be91b-d737-48dd-8f65-474540f48fde",
+            "categoryName": "Транспорт",
+            "comment": "Поездка на автобусе",
+            "date": "2025-06-25T18:30:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "2bcf18d0-87bc-4e7f-b4b9-ff5388a6cc3b",
+            "type": "expense",
+            "accountId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "accountName": "Сбербанк",
+            "amount": 400,
+            "categoryId": "b1192fac-4288-407a-81d0-b014fd1c446b",
+            "categoryName": "Развлечения и подписки",
+            "comment": "Подписка на стриминговый сервис",
+            "date": "2025-06-25T20:00:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "5e32a447-f836-4f7c-9135-0924f06cbe07",
+            "type": "income",
+            "accountId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "accountName": "Сбербанк",
+            "amount": 44000,
+            "categoryId": "233b5135-64a7-4254-929d-a8829d039c64",
+            "categoryName": "Зарплата",
+            "comment": "",
+            "date": "2025-06-26T09:00:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "87e0c7db-5b7b-44cb-82c1-04d988b78363",
+            "type": "expense",
+            "accountId": "de827331-7da8-4e10-ad10-7f7c6c1680b0",
+            "accountName": "Т-банк",
+            "amount": 1200,
+            "categoryId": "531b6d35-a53a-49d1-b43f-14832894cf1c",
+            "categoryName": "Импульсивные покупки",
+            "comment": "Новая игра",
+            "date": "2025-06-26T11:00:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "738a0a23-170e-48cd-8a5a-b81c1d2a0032",
+            "type": "income",
+            "accountId": "30ef3580-7f8e-4a6d-bf9f-eb13f7296f70",
+            "accountName": "Финансовая подушка",
+            "amount": 5000,
+            "categoryId": "48c9028c-9a7f-4506-8346-0ab36d3085d6",
+            "categoryName": "Сбережения",
+            "comment": "Отложил на будущее",
+            "date": "2025-06-26T13:00:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        },
+        {
+            "id": "ac1a4789-52a1-4b2d-9a5c-7f30c2eebc2f",
+            "type": "transfer",
+            "amount": 3000,
+            "currency": "RUB",
+            "accountId": "d3202d05-fdf4-43df-8114-c40f6cc09d6f",
+            "accountName": "Иностранный счёт",
+            "toId": "de827331-7da8-4e10-ad10-7f7c6c1680b0",
+            "categoryId": "",
+            "categoryName": "",
+            "comment": "Перевод с иностранного счёта на Т-банк",
+            "date": "2025-06-26T15:00:00.000Z"
+        },
+        {
+            "id": "e6a04f7a-c8e8-432f-94db-460caee30b8d",
+            "type": "income",
+            "accountId": "776366e4-f7b8-4fd0-84fe-bda2465ba1cd",
+            "accountName": "Сбербанк",
+            "amount": 1500,
+            "categoryId": "c572fcc3-026f-4a40-a15c-91722352cb5b",
+            "categoryName": "Возврат долгов",
+            "comment": "Погашение долга",
+            "date": "2025-06-26T17:00:00.000Z",
+            "currency": "RUB",
+            "toId": ""
+        }
+    ],
+    "defaultCurrency": "RUB"
+}
