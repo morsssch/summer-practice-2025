@@ -42,7 +42,7 @@ export const EditCategoryPage: React.FC = () => {
       const found = categories.find((a) => a.id === id);
 
       if (!found) {
-        navigate('/settings/categories');
+        navigate('/categories');
         return;
       }
 
@@ -74,7 +74,7 @@ export const EditCategoryPage: React.FC = () => {
       color,
       icon: iconName,
     });
-    navigate('/settings/categories');
+    navigate('/categories');
   };
 
   const handleDelete = () => {
@@ -84,7 +84,7 @@ export const EditCategoryPage: React.FC = () => {
 
     confirmDeletion(`категорию «${category.name}»`, async () => {
       await provider.deleteCategory(category.id);
-      navigate('/settings/categories');
+      navigate('/categories');
     });
   };
 

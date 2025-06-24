@@ -105,10 +105,8 @@ export const localStorageProvider: FinanceProvider = {
   async deleteCategory(categoryId: string): Promise<Category[]> {
     const data = getData();
     const categories = data.categories.filter((cat) => cat.id !== categoryId);
-    const transactions = data.transactions.filter(
-      (tx) => tx.categoryId !== categoryId,
-    );
-    setData({ ...data, categories, transactions });
+
+    setData({ ...data, categories });
     return categories;
   },
 

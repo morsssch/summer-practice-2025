@@ -19,10 +19,9 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <Header name={'Мария'} />
+      <Header />
       <BalanceWidget />
       <div className='option-wrapper'>
-        <ActionButton label={'Категории'} to='/settings/categories'/>
         <ActionButton label={'Демонстрационные данные'} onClick={() => handleDemoData()}/>
         <ActionButton label={'Очистить данные'} onClick={() => handleClearData()}/>
       </div>

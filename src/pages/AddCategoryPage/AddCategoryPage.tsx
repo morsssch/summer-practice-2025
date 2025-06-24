@@ -39,7 +39,7 @@ export const AddCategoryPage: React.FC = () => {
         color,
         icon: iconName,
       });
-      navigate('/settings/categories');
+      navigate('/categories');
     }
   };
 

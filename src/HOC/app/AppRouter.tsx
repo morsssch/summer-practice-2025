@@ -26,9 +26,9 @@ export const AppRouter: React.FC = () => {
         <Route path="accounts/new" element={<AddAccountPage />} />
         <Route path="accounts/:id/edit" element={<EditAccountPage />} />
 
-        <Route path="settings/categories" element={<CategoriesPage />} />
-        <Route path="settings/categories/new" element={<AddCategoryPage />} />
-        <Route path="settings/categories/:id/edit" element={<EditCategoryPage />} />
+        <Route path="categories" element={<CategoriesPage />} />
+        <Route path="categories/new" element={<AddCategoryPage />} />
+        <Route path="categories/:id/edit" element={<EditCategoryPage />} />
         
         <Route path="operations" element={<OperationsPage />} />
         <Route path="operations/new" element={<AddOperationPage />} />

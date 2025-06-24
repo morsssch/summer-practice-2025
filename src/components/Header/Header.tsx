@@ -4,7 +4,7 @@ import { ProfileButton } from '../ProfileButton/ProfileButton';
 import { NotificationsButton } from '../NotificationsButton/NotificationsButton';
 
 interface HeaderProps {
-  name: string;
+  name?: string;
 }
 
 export const Header: React.FC<HeaderProps> = ({ name }) => {
@@ -13,7 +13,7 @@ export const Header: React.FC<HeaderProps> = ({ name }) => {
       <div className="profile-wrapper">
         <ProfileButton />
         <p>
-          С возвращением, <br /> {name}
+          С возвращением, <br /> {name || 'Пользователь'}!
         </p>
       </div>
       <NotificationsButton count={4}/>

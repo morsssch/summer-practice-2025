@@ -43,21 +43,6 @@ export const EditAccountPage: React.FC = () => {
     fetchAccount();
   }, [id, navigate]);
 
-  const handleSaveClick = () => {
-    const isValid = inputRef.current?.validate();
-    if (isValid) {
-      handleSave();
-    }
-  };
-
-  const handleSave = async () => {
-    if (!account) {
-      return;
-    }
-    await provider.updateAccount({ ...account, name, type, currency });
-    navigate('/accounts');
-  };
-
   const handleDelete = () => {
     if (!account) {
       return;
@@ -75,7 +60,7 @@ export const EditAccountPage: React.FC = () => {
 
   return (
     <>
-      <h1 className="title">Редактировать счёт</h1>
+      <h1 className="title">Счёт</h1>
       <div className="options-wrapper">
         <div className="option-wrapper">
           <h2 className="subtitle">Тип</h2>
@@ -83,6 +68,7 @@ export const EditAccountPage: React.FC = () => {
             options={selectorOptions as Option[]}
             initialSelected={type as string}
             onSelect={(value) => setType(value as AccountType)}
+            disabled
           />
         </div>
 
@@ -96,6 +82,7 @@ export const EditAccountPage: React.FC = () => {
             type="text"
             placeholder="Введите..."
             onChange={(value) => setName(value as string)}
+            disabled
           />
         </div>
 
@@ -106,11 +93,11 @@ export const EditAccountPage: React.FC = () => {
             value={currency}
             onChange={(value) => setCurrency(value as string)}
             placeholder="Выберите..."
+            disabled
           />
         </div>
 
         <div className="option-wrapper">
-          <ActionButton label="Сохранить" onClick={handleSaveClick} />
           <ActionButton label="Удалить" onClick={handleDelete} danger={true} />
         </div>
       </div>

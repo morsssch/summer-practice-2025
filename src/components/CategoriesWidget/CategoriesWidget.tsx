@@ -33,7 +33,7 @@ export const CategoriesWidget: React.FC<CategoriesWidgetProps> = ({
 
   const handleCategoryClick = (category: Category) => {
     if (mode === 'edit') {
-      navigate(`/settings/categories/${category.id}/edit`);
+      navigate(`/categories/${category.id}/edit`);
     } else if (mode === 'select' && onSelect) {
       onSelect(category.id);
     }

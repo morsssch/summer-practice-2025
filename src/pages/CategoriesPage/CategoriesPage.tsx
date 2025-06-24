@@ -24,7 +24,7 @@ export const CategoriesPage: React.FC = () => {
       <h1 className="title">Категории</h1>
       <ActionButton
         label="Добавить"
-        onClick={() => navigate('/settings/categories/new')}
+        onClick={() => navigate('/categories/new')}
       />
       <div className="options-wrapper">
         <div className="option-wrapper">

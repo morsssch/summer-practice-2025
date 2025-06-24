@@ -1,0 +1,119 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.finance-chart-wrapper {
+  width: 100%;
+  overflow-x: scroll;
+  border-radius: $lBorderRadius;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  @include Body2;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+.title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.finance-chart-container {
+  position: relative;
+  min-width: 32em;
+  width: 100%;
+  background-color: $widgetBg;
+  padding: 20px;
+  height: 14rem;
+  border-radius: $lBorderRadius;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.period-selector {
+  padding: 0.5rem;
+  text-align: right;
+  @include Body2;
+  .menu-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .period-menu {
+    position: absolute;
+    top: 9rem;
+    right: 2rem;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+
+    li {
+      button {
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 0.5rem 1rem;
+        text-align: left;
+        cursor: pointer;
+        font-size: 0.875rem;
+
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+  }
+}
+
+.finance-chart-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.touch-details-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.touch-details-line {
+  position: absolute;
+  width: 1px;
+  background-color: $chillGrey;
+  height: 100%;
+}
+
+.touch-details-box {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  gap: $sGap;
+  padding: $xsGap;
+  border-radius: $sBorderRadius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  top: 10px;
+  font-size: 0.875rem;
+}
+
+.touch-details-title {
+  @include Body1;
+}

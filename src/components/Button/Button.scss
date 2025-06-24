@@ -1,0 +1,15 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.button {
+  @include Body2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: $sGap;
+  padding: $mGap;
+  width: 100%;
+  background-color: #ffffff;
+  color: $almostBlack !important;
+  border-radius: $mBorderRadius;
+}

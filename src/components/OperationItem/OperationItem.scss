@@ -13,36 +13,6 @@
   border-radius: $mBorderRadius;
 }
 
-.operation-swipe-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  border-radius: $mBorderRadius;
-}
-
-.operation-background {
-  position: absolute;
-  inset: 0;
-  background-color: $almostBlack;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  border-radius: $mBorderRadius;
-  z-index: 0;
-  margin: 1px;
-
-  .operation-background-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    height: 100%;
-    justify-content: space-between;
-    padding: $sGap;
-  }
-}
-
 .operation-item-wrapper {
   display: flex;
   width: 100%;
@@ -81,23 +51,4 @@
   &.transfer {
     color: $notFunnyBlue;
   }
-}
-
-.operation-swipe-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-
-.right-title {
-  @include Body2;
-  color: #ffffff;
-}
-
-.right-action {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  @include Caption2;
-  color: #ffffff;
 }

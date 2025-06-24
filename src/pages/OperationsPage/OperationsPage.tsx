@@ -28,6 +28,7 @@ export const OperationsPage: React.FC = () => {
   const [period, setPeriod] = useState('all');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [accounts, setAccounts] = useState<Account[]>([]);
@@ -41,10 +42,17 @@ export const OperationsPage: React.FC = () => {
     const a = searchParams.get('accountId');
     const c = searchParams.get('currency');
     const d = searchParams.get('dateRange');
+    const cats = searchParams.get('categories');
 
-    if (t) {setType(t);}
-    if (a) {setAccountId(a);}
-    if (c) {setCurrency(c);}
+    if (t) {
+      setType(t);
+    }
+    if (a) {
+      setAccountId(a);
+    }
+    if (c) {
+      setCurrency(c);
+    }
     if (d && d.includes(',')) {
       const [start, end] = d.split(',');
       if (start && end) {
@@ -54,6 +62,9 @@ export const OperationsPage: React.FC = () => {
       }
     } else {
       setDateRange(null);
+    }
+    if (cats) {
+      setSelectedCategories(cats.split(','));
     }
   }, [searchParams]);
 
@@ -100,8 +111,14 @@ export const OperationsPage: React.FC = () => {
     };
   }, []);
 
-  const updateParam = (key: string, value: string) => {
-    if (value) {
+  const updateParam = (key: string, value: string | string[]) => {
+    if (Array.isArray(value)) {
+      if (value.length > 0) {
+        searchParams.set(key, value.join(','));
+      } else {
+        searchParams.delete(key);
+      }
+    } else if (value) {
       searchParams.set(key, value);
     } else {
       searchParams.delete(key);
@@ -115,6 +132,7 @@ export const OperationsPage: React.FC = () => {
     setCurrency('');
     setDateRange(null);
     setPeriod('all');
+    setSelectedCategories([]);
     setSearchParams({}, { replace: true });
   };
 
@@ -169,29 +187,52 @@ export const OperationsPage: React.FC = () => {
         if (currency && tx.currency !== currency) {
           return false;
         }
+        if (
+          selectedCategories.length > 0 &&
+          !selectedCategories.includes(tx.categoryId)
+        ) {
+          return false;
+        }
         if (!applyPeriodFilter(tx)) {
           return false;
         }
         return true;
       }),
-    [transactions, type, accountId, currency, period, dateRange],
+    [
+      transactions,
+      type,
+      accountId,
+      currency,
+      period,
+      dateRange,
+      selectedCategories,
+    ],
   );
 
-  const grouped = useMemo(
-    () =>
-      filtered.reduce(
-        (acc, tx) => {
-          const dateKey = tx.date.split('T')[0];
-          if (!acc[dateKey]) {
-            acc[dateKey] = [];
-          }
-          acc[dateKey].push(tx);
-          return acc;
-        },
-        {} as Record<string, Transaction[]>,
-      ),
-    [filtered],
-  );
+  const grouped = useMemo(() => {
+    const groupedByDate = filtered.reduce(
+      (acc, tx) => {
+        const dateKey = tx.date.split('T')[0];
+        if (!acc[dateKey]) {
+          acc[dateKey] = [];
+        }
+        acc[dateKey].push(tx);
+        return acc;
+      },
+      {} as Record<string, Transaction[]>,
+    );
+
+    // Sort transactions within each date group by category name
+    Object.keys(groupedByDate).forEach((date) => {
+      groupedByDate[date].sort((a, b) => {
+        const categoryA = categoryMap.get(a.categoryId)?.name || '';
+        const categoryB = categoryMap.get(b.categoryId)?.name || '';
+        return categoryA.localeCompare(categoryB);
+      });
+    });
+
+    return groupedByDate;
+  }, [filtered, categoryMap]);
 
   const sortedDates = useMemo(
     () => Object.keys(grouped).sort((a, b) => b.localeCompare(a)),
@@ -266,8 +307,8 @@ export const OperationsPage: React.FC = () => {
               transition={{
                 type: 'spring',
                 stiffness: 300,
-                damping: 20,
-                mass: 0.5,
+                damping: 24,
+                mass: 1,
               }}
             >
               <div className="filler"></div>
@@ -291,7 +332,12 @@ export const OperationsPage: React.FC = () => {
                   value={dateRange}
                   withTime={false}
                   onChange={(iso) => {
-                    if (Array.isArray(iso) && iso.length === 2 && iso[0] && iso[1]) {
+                    if (
+                      Array.isArray(iso) &&
+                      iso.length === 2 &&
+                      iso[0] &&
+                      iso[1]
+                    ) {
                       setDateRange([iso[0], iso[1]]);
                       updateParam('dateRange', iso.join(','));
                     } else {
@@ -339,6 +385,20 @@ export const OperationsPage: React.FC = () => {
                 placeholder="Валюта"
               />
 
+              <Dropdown
+                options={categories.map((c) => ({
+                  value: c.id,
+                  label: c.name,
+                }))}
+                value={selectedCategories}
+                onChange={(val) => {
+                  setSelectedCategories(val as string[]);
+                  updateParam('categories', val as string[]);
+                }}
+                placeholder="Категории"
+                multiSelect
+              />
+
               <ActionButton
                 label="Сбросить фильтры"
                 onClick={resetFilters}
@@ -367,7 +427,10 @@ export const OperationsPage: React.FC = () => {
         ))
       )}
 
-      <div ref={loadMoreRef} className="load-more-trigger" />
+      <div
+        ref={loadMoreRef}
+        className="load-more-trigger"
+      />
     </>
   );
 };
