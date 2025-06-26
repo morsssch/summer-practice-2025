@@ -1,0 +1,158 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.option-wrapper {
+  color: $almostBlack;
+
+  .option-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: $sGap;
+
+    .menu-wrapper {
+      position: relative;
+
+      .menu-icon {
+        cursor: pointer;
+        stroke: $almostBlack;
+        transition: stroke 0.2s ease;
+
+        &:hover {
+          stroke: $notFunnyBlue;
+        }
+      }
+
+      .period-menu {
+        position: absolute;
+        top: calc(100% + #{$xsGap});
+        right: 0;
+        background-color: $widgetBg;
+        border-radius: $sBorderRadius;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        padding: $xsGap;
+        display: flex;
+        flex-direction: column;
+        gap: $xsGap;
+
+        .period-option {
+          @include Body2;
+          background: none;
+          border: none;
+          padding: $xsGap $mGap;
+          text-align: left;
+          color: $almostBlack;
+          cursor: pointer;
+          border-radius: $sBorderRadius;
+          transition: background-color 0.2s ease;
+
+          &:hover {
+            background-color: $pastelGrey;
+          }
+
+          &.active {
+            background-color: $funnyBlue;
+            color: $notFunnyBlue;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  .top-expense-categories-widget-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $sGap;
+    background-color: $widgetBg;
+    border-radius: $lBorderRadius;
+    padding: $mGap;
+    transition: max-height 0.5s ease-in-out;
+    overflow: hidden;
+
+    p {
+      padding: 0 !important;
+    }
+    &.expanded {
+      max-height: 1000px;
+    }
+
+    &:not(.expanded) {
+      max-height: #{($mGap * 2) + ($sGap * 4) + (2.5em * 5)};
+    }
+
+    .category-item {
+      display: flex;
+      align-items: center;
+      gap: $sGap;
+      padding: $xsGap 0;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: slideIn 0.3s ease forwards;
+
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+
+      .category-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: $xsGap;
+
+        .category-progress {
+          background-color: $pastelGrey;
+          height: 6px;
+          border-radius: $sBorderRadius;
+          overflow: hidden;
+
+          .progress-bar {
+            height: 100%;
+            transition: width 0.5s ease;
+          }
+        }
+        .category-info {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+          .category-amount {
+            @include Body2;
+            color: $almostBlack;
+          }
+
+          .category-name {
+            @include Caption2;
+            color: $notFunnyBlue;
+            overflow: visible;
+          }
+        }
+      }
+    }
+
+    p {
+      @include Body2;
+      color: $almostBlack;
+      text-align: center;
+      padding: $mGap;
+    }
+  }
+
+  .toggle-button {
+    margin-top: $mGap;
+    align-self: center;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

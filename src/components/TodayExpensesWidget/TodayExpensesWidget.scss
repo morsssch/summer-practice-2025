@@ -1,0 +1,47 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.option-wrapper {
+  color: $almostBlack;
+  .option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .today-expenses-widget-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: $mGap;
+    .today-expenses-widget {
+      width: 100%;
+      background-color: $widgetBg;
+      border-radius: $lBorderRadius;
+      color: $almostBlack;
+      display: flex;
+      flex-direction: column;
+      padding: $mGap;
+      gap: $sGap;
+      
+      .today-expenses-widget-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & > p {
+          @include Body2;
+        }
+      }
+      .today-expenses-widget-amount {
+        @include Subtitle1;
+      }
+
+      .lucide-trending-up {
+        stroke: $income;
+      }
+
+      .lucide-trending-down {
+        stroke: $error;
+      }
+    }
+  }
+}

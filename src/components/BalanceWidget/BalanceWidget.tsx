@@ -51,7 +51,7 @@ export const BalanceWidget: React.FC = () => {
   );
   const currencySymbol = currencyOption
     ? currencyOption.label.split(' ')[0]
-    : '₽';
+    : defaultCurrency;
   const locale = defaultCurrency === 'RUB' ? 'ru-RU' : 'en-US';
 
   return (

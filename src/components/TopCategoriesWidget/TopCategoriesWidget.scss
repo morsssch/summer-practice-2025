@@ -1,0 +1,47 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.option-wrapper {
+  color: $almostBlack;
+
+  .annotation {
+    @include Body2;
+  }
+
+  .option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .top-categories-widget-wrapper {
+    display: flex;
+    gap: $sGap;
+    background-color: $widgetBg;
+    border-radius: $lBorderRadius;
+    justify-content: space-around;
+    padding: $mGap;
+
+    & > p {
+      @include Body2;
+    }
+
+    .category-item {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: $sGap;
+      color: $almostBlack;
+
+      .category-amount {
+        @include Body2;
+        flex: 1;
+      }
+
+      .category-name {
+        @include Caption2;
+        color: $almostBlack;
+      }
+    }
+  }
+}

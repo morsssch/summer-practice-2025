@@ -11,10 +11,24 @@ import {
   Folder,
   LayoutDashboard,
 } from 'lucide-react';
+import { useNavigate } from 'react-router';
 import { Button } from '../../components/Button/Button';
 import { Header } from '../../components/Header';
+import { ActionButton } from '../../components/ActionButton';
+import demoData from '../../constants/demoData.json'
 
 export const OtherPage: React.FC = () => {
+  const navigate = useNavigate()
+  const handleDemoData = (): void => {
+    localStorage.setItem('finance_data', JSON.stringify(demoData));
+    navigate('/')
+  }
+
+  const handleClearData = (): void => {
+    localStorage.clear()
+    navigate('/')
+  }
+
   return (
     <>
       <Header />
@@ -24,6 +38,8 @@ export const OtherPage: React.FC = () => {
         <Button label="О приложении" to="/about" icon={Info} />
         <Button label="Что нового" to="/changelog" icon={Rocket} />
         <Button label="Настройки" to="/setting" icon={Settings} />
+        <ActionButton label={'Демонстрационные данные'} onClick={() => handleDemoData()}/>
+        <ActionButton label={'Очистить данные'} onClick={() => handleClearData()}/>
       </div>
 
       <div className="option-wrapper">

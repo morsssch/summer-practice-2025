@@ -1,0 +1,27 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.option-wrapper {
+  color: $almostBlack;
+
+  .option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .today-operations-widget-wrapper {
+    border-radius: $lBorderRadius;
+
+    p {
+      @include Body2;
+      color: $almostBlack;
+      text-align: center;
+      display: flex;
+      background-color: #ffffff;
+      border-radius: $lBorderRadius;
+      justify-content: space-around;
+      padding: $mGap;
+    }
+  }
+}

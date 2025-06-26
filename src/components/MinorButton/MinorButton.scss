@@ -1,0 +1,16 @@
+@use '../../styles/base/Vars.scss' as *;
+@use '../../styles/base/Mixins.scss' as *;
+
+.minor-button {
+  @include Caption2;
+  font-size: 0.75em;
+  display: flex;
+  align-items: center;
+  gap: $xsGap;
+  background-color: $funnyBlue;
+  color: $almostBlack;
+  padding: ($xsGap / 2) $xsGap;
+  border-radius: $xsGap;
+  width: fit-content;
+  align-self: center;
+}

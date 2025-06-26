@@ -15,6 +15,7 @@ import {
   eachMonthOfInterval,
 } from 'date-fns';
 import { ru } from 'date-fns/locale';
+import { MoreVertical } from 'lucide-react';
 import provider from '../../services/provider';
 import type { Transaction } from '../../services/types';
 import './FinanceChart.scss';
@@ -49,6 +50,7 @@ const FinanceChart: React.FC<FinanceChartProps> = ({
   const chartInstanceRef = useRef<Chart | null>(null);
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
+  const menuRef = useRef<HTMLDivElement>(null);
   const [period, setPeriod] = useState<'day' | 'week' | 'month'>('day');
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [touchDetails, setTouchDetails] = useState<TouchDetails | null>(null);
@@ -234,6 +236,19 @@ const FinanceChart: React.FC<FinanceChartProps> = ({
     };
   }, [transactions, period, showIncome, showExpenses]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
     if (!enableTouchDetails || !chartInstanceRef.current || !chartRef.current) {
       return;
@@ -264,7 +279,7 @@ const FinanceChart: React.FC<FinanceChartProps> = ({
         setIsHeld(true);
         setIsScrollingBlocked(true);
       }
-    }, 500); // 500 мс задержки для удержания
+    }, 500);
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLCanvasElement>) => {
@@ -329,45 +344,41 @@ const FinanceChart: React.FC<FinanceChartProps> = ({
     setTouchDetails(null);
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
-
-  const handlePeriodSelect = (newPeriod: 'day' | 'week' | 'month') => {
-    setPeriod(newPeriod);
-    setIsMenuOpen(false);
-  };
+  const periodOptions: { value: 'day' | 'week' | 'month'; label: string }[] = [
+    { value: 'day', label: 'День' },
+    { value: 'week', label: 'Неделя' },
+    { value: 'month', label: 'Месяц' },
+  ];
 
   return (
     <div className="option-wrapper">
-      <div className="title-wrapper">
+      <div className="option-header">
         <h2 className="subtitle">Статистика по операциям</h2>
         {enablePeriodSelection && (
-          <div className="period-selector">
-            <button
-              onClick={toggleMenu}
-              className="menu-button"
-            >
-              ⋮
-            </button>
+          <div className="menu-wrapper">
+            <MoreVertical
+              size={24}
+              className="menu-icon"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            />
             {isMenuOpen && (
-              <ul className="period-menu">
-                <li>
-                  <button onClick={() => handlePeriodSelect('day')}>
-                    День
+              <div
+                className="period-menu"
+                ref={menuRef}
+              >
+                {periodOptions.map((opt) => (
+                  <button
+                    key={opt.value}
+                    className={`period-option ${period === opt.value ? 'active' : ''}`}
+                    onClick={() => {
+                      setPeriod(opt.value);
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    {opt.label}
                   </button>
-                </li>
-                <li>
-                  <button onClick={() => handlePeriodSelect('week')}>
-                    Неделя
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => handlePeriodSelect('month')}>
-                    Месяц
-                  </button>
-                </li>
-              </ul>
+                ))}
+              </div>
             )}
           </div>
         )}
@@ -401,15 +412,13 @@ const FinanceChart: React.FC<FinanceChartProps> = ({
                       : `${touchDetails.x - 150}px`,
                 }}
               >
-                <p className='touch-details-title'>
+                <p className="touch-details-title">
                   {format(parseISO(touchDetails.date), 'd MMMM yyyy', {
                     locale: ru,
                   })}
                 </p>
                 {showIncome && <p>Доход - {touchDetails.income}</p>}
-                {showExpenses && (
-                  <p>Траты - {touchDetails.expense}</p>
-                )}
+                {showExpenses && <p>Траты - {touchDetails.expense}</p>}
               </div>
             </div>
           )}
