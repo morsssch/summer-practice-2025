@@ -58,9 +58,9 @@ export const OtherPage: React.FC = () => {
 
       <div className="option-wrapper">
         <h2 className="subtitle">Наши соцсети</h2>
-        <Button label="Telegram" to="https://t.me/your_project" icon={Send} />
-        <Button label="VK" to="https://vk.com/your_project" icon={Send} />
-        <Button label="GitHub / Notion" to="https://github.com/your_project" icon={Github} />
+        <Button label="Telegram" to="https://t.me/" icon={Send} />
+        <Button label="VK" to="https://vk.com/" icon={Send} />
+        <Button label="GitHub / Notion" to="https://github.com/" icon={Github} />
       </div>
     </>
   );
