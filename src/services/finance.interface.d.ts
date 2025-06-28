@@ -5,7 +5,7 @@ export interface FinanceProvider {
     addAccount(account: Omit<Account, 'id'>): Promise<Account>;
     updateAccount(accountToUpdate: Account): Promise<Account[]>;
     deleteAccount(accountId: string): Promise<Account[]>;
-    getAccountBalance(accountId: string, transactions: Transaction[]): Promise<number>;
+    getAccountBalance(accountId: string): Promise<number>;
     getCategories(type?: TransactionType): Promise<Category[]>;
     addCategory(category: Omit<Category, 'id'>): Promise<Category>;
     updateCategory(categoryToUpdate: Category): Promise<Category[]>;
