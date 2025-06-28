@@ -1,0 +1,15 @@
+export declare const API_URL: string;
+export declare const AUTH_REFRESH: string;
+export declare const AUTH_LOGIN: string;
+export declare const AUTH_REG: string;
+export declare const AUTH_LOGOUT: string;
+export declare const ACCOUNTS = "/accounts";
+export declare const ACCOUNT_BY_ID: (id: string) => string;
+export declare const ACCOUNT_BALANCE: (id: string) => string;
+export declare const CATEGORIES = "/categories";
+export declare const CATEGORY_BY_ID: (id: string) => string;
+export declare const TRANSACTIONS = "/transactions";
+export declare const TRANSACTION_BY_ID: (id: string) => string;
+export declare const TRANSFERS = "/transfers";
+export declare const BALANCE = "/balance";
+export declare const DEFAULT_CURRENCY = "/settings/defaultCurrency";

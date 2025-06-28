@@ -8,10 +8,7 @@ export interface FinanceProvider {
   addAccount(account: Omit<Account, 'id'>): Promise<Account>;
   updateAccount(accountToUpdate: Account): Promise<Account[]>; //
   deleteAccount(accountId: string): Promise<Account[]>; //
-  getAccountBalance(
-    accountId: string,
-    transactions: Transaction[],
-  ): Promise<number>;
+  getAccountBalance(accountId: string): Promise<number>;
 
   getCategories(type?: TransactionType): Promise<Category[]>;
   addCategory(category: Omit<Category, 'id'>): Promise<Category>;
@@ -20,8 +17,11 @@ export interface FinanceProvider {
 
   getTransactions(): Promise<Transaction[]>;
   addTransaction(transaction: Omit<Transaction, 'id'>): Promise<Transaction>;
-  updateTransaction(id: string, updatedData: Partial<Transaction>): Promise<Transaction[]>;
-  deleteTransaction(id: string): Promise<Transaction[]>
+  updateTransaction(
+    id: string,
+    updatedData: Partial<Transaction>,
+  ): Promise<Transaction[]>;
+  deleteTransaction(id: string): Promise<Transaction[]>;
 
   addTransfer({
     fromId,

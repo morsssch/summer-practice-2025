@@ -78,7 +78,7 @@ export const AddCategoryPage: React.FC = () => {
 
         <div className="option-wrapper">
           <h2 className="subtitle">Цвет фона</h2>
-          <ColorPicker
+          <ColorPicker<PastelColor>
             colors={PASTEL_COLORS}
             selectedColor={color}
             onSelect={setColor}

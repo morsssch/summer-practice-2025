@@ -37,14 +37,10 @@ export const AddOperationPage: React.FC = () => {
     const loadData = async () => {
       const allAccounts = await provider.getAccounts();
       const allCategories = await provider.getCategories();
-      const transactions = await provider.getTransactions();
 
       const balances: { [key: string]: number } = {};
       for (const account of allAccounts) {
-        balances[account.id] = await provider.getAccountBalance(
-          account.id,
-          transactions,
-        );
+        balances[account.id] = await provider.getAccountBalance(account.id);
       }
 
       setAccounts(allAccounts);
@@ -60,7 +56,6 @@ export const AddOperationPage: React.FC = () => {
       return;
     }
 
-    const transactions = await provider.getTransactions();
     const selectedAccount = accounts.find((a) => a.id === accountId);
 
     if (!selectedAccount) {
@@ -80,15 +75,13 @@ export const AddOperationPage: React.FC = () => {
         alert('Счёт получатель не найден');
         return;
       }
+
       if (selectedAccount.currency !== to.currency) {
         alert('Счета должны быть в одной валюте');
         return;
       }
 
-      const fromBalance = await provider.getAccountBalance(
-        accountId as string,
-        transactions,
-      );
+      const fromBalance = await provider.getAccountBalance(accountId as string);
 
       if (fromBalance < amount) {
         alert('Недостаточно средств на выбранном счёте');
@@ -100,7 +93,7 @@ export const AddOperationPage: React.FC = () => {
         toId: targetAccountId as string,
         amount,
         comment,
-        date: date || new Date().toISOString(), 
+        date: date || new Date().toISOString(),
       });
     } else {
       if (!date) {
@@ -116,7 +109,7 @@ export const AddOperationPage: React.FC = () => {
         categoryId: categoryId || '',
         categoryName: categories.find((c) => c.id === categoryId)?.name || '',
         comment,
-        date, // Используем дату из DatePicker
+        date,
         currency: selectedAccount.currency,
       });
     }

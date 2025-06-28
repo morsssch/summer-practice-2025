@@ -53,15 +53,17 @@ export const localStorageProvider: FinanceProvider = {
     return accounts;
   },
 
-  async getAccountBalance(
-    accountId: string,
-    transactions: Transaction[],
-  ): Promise<number> {
+  async getAccountBalance(accountId: string): Promise<number> {
     const data = getData();
     const account = data.accounts.find((a) => a.id === accountId);
-    const currency = account?.currency || data.defaultCurrency || 'RUB';
 
-    return transactions
+    if (!account) {
+      throw new Error(`Счёт с id ${accountId} не найден`);
+    }
+
+    const currency = account.currency || data.defaultCurrency || 'RUB';
+
+    return data.transactions
       .filter((tx) => tx.currency === currency)
       .reduce((sum, tx) => {
         if (tx.type === 'transfer') {
@@ -73,9 +75,11 @@ export const localStorageProvider: FinanceProvider = {
           }
           return sum;
         }
+
         if (tx.accountId === accountId) {
           return sum + (tx.type === 'income' ? tx.amount : -tx.amount);
         }
+
         return sum;
       }, 0);
   },

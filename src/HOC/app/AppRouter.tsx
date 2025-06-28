@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import React from 'react';
 import Layout from '../../layouts/Layout.tsx';
 import { HomePage } from '../../pages/HomePage/HomePage';
@@ -17,29 +17,32 @@ import { NotFoundPage } from '../../pages/NotFoundPage/NotFoundPage.tsx';
 
 export const AppRouter: React.FC = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Navigate to="/home" replace />} />
-        <Route path="home" element={<HomePage />} />
-        
-        <Route path="accounts" element={<AccountsPage/>} />
-        <Route path="accounts/new" element={<AddAccountPage />} />
-        <Route path="accounts/:id/edit" element={<EditAccountPage />} />
+    <BrowserRouter basename="/summer-practice-2025">
+       <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="/home" replace />} />
+          <Route path="/home" element={<HomePage />} />
+          
+          <Route path="/accounts" element={<AccountsPage/>} />
+          <Route path="/accounts/new" element={<AddAccountPage />} />
+          <Route path="/accounts/:id/edit" element={<EditAccountPage />} />
 
-        <Route path="categories" element={<CategoriesPage />} />
-        <Route path="categories/new" element={<AddCategoryPage />} />
-        <Route path="categories/:id/edit" element={<EditCategoryPage />} />
-        
-        <Route path="operations" element={<OperationsPage />} />
-        <Route path="operations/new" element={<AddOperationPage />} />
-        <Route path="operations/:id" element={<EditOperationPage />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/categories/new" element={<AddCategoryPage />} />
+          <Route path="/categories/:id/edit" element={<EditCategoryPage />} />
+          
+          <Route path="/operations" element={<OperationsPage />} />
+          <Route path="/operations/new" element={<AddOperationPage />} />
+          <Route path="/operations/:id" element={<EditOperationPage />} />
 
-        
-        <Route path="analytics" element={<AnalyticsPage />} />
-        <Route path="other" element={<OtherPage />} />
+          
+          <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/other" element={<OtherPage />} />
 
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+   
   );
 };

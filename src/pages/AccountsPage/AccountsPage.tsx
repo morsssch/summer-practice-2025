@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './AccountsPage.scss';
 import { Info, Plus } from 'lucide-react';
 import provider from '../../services/provider';
-import type { Account, Transaction } from '../../services/types';
+import type { Account } from '../../services/types';
 import { AccountWidget } from '../../components/AccountWidget/AccountWidget';
 import { ActionButton } from '../../components/ActionButton/ActionButton';
 
 export const AccountsPage: React.FC = () => {
   const [accounts, setAccounts] = useState<Account[]>([]);
-  const [, setTransactions] = useState<Transaction[]>([]);
   const [balances, setBalances] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -16,19 +15,14 @@ export const AccountsPage: React.FC = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [accountsData, transactionsData] = await Promise.all([
-          provider.getAccounts(),
-          provider.getTransactions(),
-        ]);
+        const accountsData = await provider.getAccounts();
         setAccounts(accountsData);
-        setTransactions(transactionsData);
 
         const balancesData: Record<string, number> = {};
         await Promise.all(
           accountsData.map(async (account) => {
             balancesData[account.id] = await provider.getAccountBalance(
               account.id,
-              transactionsData,
             );
           }),
         );
@@ -60,7 +54,10 @@ export const AccountsPage: React.FC = () => {
           to="/accounts/new"
         />
         <div className="accounts-hint">
-          <Info size={24} className='accounts-hint-icon'/>
+          <Info
+            size={24}
+            className="accounts-hint-icon"
+          />
           Проведите влево по счёту чтобы его настроить
         </div>
 

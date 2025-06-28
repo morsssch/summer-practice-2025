@@ -54,7 +54,6 @@ export const apiProvider: FinanceProvider = {
 
   async getAccountBalance(
     accountId: string,
-    _txs: Transaction[],
   ): Promise<number> {
     const response = await api.get(ACCOUNT_BALANCE(accountId));
     return response.data.balance;
